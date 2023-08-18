@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   .allproducts{
+    display: grid;
+    grid-template-columns: repeat(4 ,1fr);
+   
+
+   }
+   .img{
+    width: 50%;
+   }
+   .view{
+    gap: 30%;
+   }
+   .product-container{
+    border: solid rgb(220, 222, 182);
+    gap: 5%;
+    padding: 20px;
+    margin: 10px;
+   }
+   .btn{
+    padding: 10px 20px;
+    color: rgb(252, 246, 246);
+    background-color: rgb(65, 204, 34);
+    border-radius: 30px;
+   }
+   .head{
+    font-size: 120%;
+    color:black;
+    background-color: chartreuse;
+    text-align: center;
+    padding: 30px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+
+   }
+</style>
+<body>
+   <h1 class="head">Welcome to Mama Groce Products</h1>
+  
+     <div class="allproducts">
+        {% for product in products %}
+            <div class="product-container">
+                <img src="{{product.image.url}}" class="img"/>
+                <h1 class="product-name">{{ product.name }}</h1> 
+             
+                <div class="view">
+                 <a href="{% url 'product_detail' id=product.id %}"> <button class="btn">View Details</button></a> 
+                 <a href="{% url 'product_update' id=product.id %}"> <button class="btn">Edit Product</button></a>
+                </div>
+                
+                     </div>
+        {% endfor %}
+    </div> 
+    
+    
+</body>
+</html>
